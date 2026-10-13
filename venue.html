@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>包場｜異數生活</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="venue">
+  <div id="site-header"></div>
+  <main>
+    <section class="page-hero" data-note="HERO｜Video / Photo">
+      <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=2000&q=80" alt="長桌聚會">
+    </section>
+    <section class="block" data-note="客製包場｜使用情境">
+      <div class="narrow">
+        <h1>讓一場聚會，發生在異數生活</h1>
+        <p class="lead">企業、媒體、家人。同一張桌子，不同的理由。把空間留給一群人，飯還是那一頓認真的飯。</p>
+      </div>
+      <div class="wrap scenes" style="margin-top:72px">
+        <article>
+          <h3>企業包場</h3>
+          <p>會議結束以後的那一餐，或一年一次、需要被記住的晚上。</p>
+        </article>
+        <article>
+          <h3>記者會／媒體餐會</h3>
+          <p>發表需要一個不會搶走內容的空間。菜與器物先把氣氛放好。</p>
+        </article>
+        <article>
+          <h3>家庭聚會</h3>
+          <p>生日、回門、久沒見的一桌。人比流程重要。</p>
+        </article>
+      </div>
+    </section>
+    <section class="block" style="padding-top:0" data-note="CTA｜洽詢包場">
+      <div class="narrow">
+        <h2>洽詢包場</h2>
+        <p class="lead">留下日子與人數。這張表只在這台電腦上記一下，不會真的送出。</p>
+      </div>
+      <form class="form" id="venue-form" style="margin-top:48px">
+        <div class="field"><label for="v-name">姓名</label><input id="v-name" name="name" required></div>
+        <div class="field"><label for="v-phone">電話</label><input id="v-phone" name="phone" required></div>
+        <div class="field">
+          <label for="v-type">類型</label>
+          <select id="v-type" name="type">
+            <option>企業包場</option>
+            <option>記者會／媒體餐會</option>
+            <option>家庭聚會</option>
+          </select>
+        </div>
+        <div class="field"><label for="v-date">希望日期</label><input id="v-date" name="date" type="date" required></div>
+        <div class="field"><label for="v-guests">人數</label><input id="v-guests" name="guests" inputmode="numeric" required></div>
+        <div class="field"><label for="v-note">想說的話</label><textarea id="v-note" name="note"></textarea></div>
+        <p class="center"><button class="btn-line" type="submit">送出洽詢</button></p>
+      </form>
+      <p class="form-ok" id="venue-ok" hidden>已收到這筆示意洽詢。<br>正式網站會把內容送到包場窗口，此 Demo 不會寄出。</p>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/data.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>
