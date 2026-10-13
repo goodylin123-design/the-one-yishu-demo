@@ -70,7 +70,6 @@
       const cls = key === active ? "active" : "";
       return `<a class="${cls}" data-nav="${key}" href="${href}">${esc(t(label))}</a>${rule}`;
     }).join("");
-    const current = YISHU.LANGS.find(([id]) => id === YISHU.lang) || YISHU.LANGS[0];
     const langMenu = YISHU.LANGS.map(([id, name]) =>
       `<button type="button" role="option" data-lang="${id}" aria-current="${id === YISHU.lang ? "true" : "false"}">${esc(name)}</button>`
     ).join("");
@@ -86,7 +85,10 @@
           </a>
           <nav class="primary-nav" aria-label="${esc(t("menu.label"))}">${links}</nav>
           <div class="lang">
-            <button class="lang-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="${esc(t("lang.switch"))}">${esc(current[2])}</button>
+            <button class="lang-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="${esc(t("lang.switch"))}">
+              <span class="lang-earth"><img src="assets/icon-earth.png" alt="" width="24" height="24"></span>
+              <svg class="lang-caret" viewBox="0 0 20 11" width="8" height="11" aria-hidden="true"><path fill-rule="evenodd" d="M19.53.47a.75.75 0 0 1 0 1.06l-9 9a.75.75 0 0 1-1.06 0l-9-9A.75.75 0 0 1 1.53.47L10 8.94 18.47.47a.75.75 0 0 1 1.06 0Z" fill="#000"/></svg>
+            </button>
             <div class="lang-menu" role="listbox" hidden>${langMenu}</div>
           </div>
         </header>
@@ -158,12 +160,17 @@
 
     const langBtn = document.querySelector(".lang-btn");
     const langMenuEl = document.querySelector(".lang-menu");
-    langBtn?.addEventListener("click", (event) => {
-      event.stopPropagation();
-      const open = langMenuEl.hasAttribute("hidden");
+    const langBox = document.querySelector(".lang");
+    function setLangOpen(open) {
+      if (!langMenuEl || !langBtn) return;
       if (open) langMenuEl.removeAttribute("hidden");
       else langMenuEl.setAttribute("hidden", "");
       langBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      langBox?.classList.toggle("lang-open", open);
+    }
+    langBtn?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      setLangOpen(langMenuEl.hasAttribute("hidden"));
     });
     langMenuEl?.addEventListener("click", (event) => {
       const choice = event.target.closest("[data-lang]");
@@ -172,10 +179,7 @@
       location.reload();
     });
     document.addEventListener("click", (event) => {
-      if (!event.target.closest(".lang")) {
-        langMenuEl?.setAttribute("hidden", "");
-        langBtn?.setAttribute("aria-expanded", "false");
-      }
+      if (!event.target.closest(".lang")) setLangOpen(false);
     });
 
     document.querySelector(".menu-btn")?.addEventListener("click", () => {
@@ -202,8 +206,7 @@
       if (event.key === "Escape") {
         document.body.classList.remove("nav-open");
         document.getElementById("cart-drawer")?.setAttribute("hidden", "");
-        document.querySelector(".lang-menu")?.setAttribute("hidden", "");
-        document.querySelector(".lang-btn")?.setAttribute("aria-expanded", "false");
+        setLangOpen(false);
       }
     });
 
