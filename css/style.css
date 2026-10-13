@@ -6,7 +6,7 @@
   --line: rgba(49, 49, 49, 0.22);
   --photo: #e6dfd6;
   --header-h: 168px;
-  --serif: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+  --serif: "Noto Serif TC", "Noto Serif SC", "Noto Serif JP", "Noto Serif KR", "Songti TC", "PMingLiU", serif;
   --en: "EB Garamond", "Noto Serif TC", serif;
 }
 
@@ -81,6 +81,40 @@ button { cursor: pointer; }
 }
 .menu-btn span { display: block; height: 1px; background: var(--ink); }
 .menu-btn span + span { margin-top: 7px; }
+
+.lang { position: absolute; right: 22px; top: 28px; z-index: 60; }
+.lang-btn { font-size: 13px; letter-spacing: 0.12em; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
+.lang-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 12px);
+  min-width: 148px;
+  margin: 0;
+  padding: 8px 0;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  text-align: left;
+}
+.lang-menu[hidden] { display: none !important; }
+.lang-menu button { display: block; width: 100%; text-align: left; padding: 8px 16px; font-size: 14px; letter-spacing: 0.06em; }
+.lang-menu button[aria-current="true"] { font-weight: 700; }
+.lang-menu button:hover { opacity: 0.55; }
+
+html[lang="zh-Hans"] body { font-family: "Noto Serif SC", "Noto Serif TC", serif; }
+html[lang="ja"] body { font-family: "Noto Serif JP", "Noto Serif TC", serif; letter-spacing: 0.08em; }
+html[lang="ko"] body { font-family: "Noto Serif KR", "Noto Serif TC", serif; letter-spacing: 0.04em; }
+html[lang="en"] body { letter-spacing: 0.02em; }
+html[lang="en"] .primary-nav,
+html[lang="en"] h1,
+html[lang="en"] h2,
+html[lang="en"] .section-title,
+html[lang="en"] .lead,
+html[lang="ja"] .lead,
+html[lang="ko"] .lead { letter-spacing: 0.04em; }
+html[lang="en"] .lead,
+html[lang="ja"] .lead,
+html[lang="ko"] .lead { line-height: 1.9; }
+html[lang="en"] .primary-nav { font-size: 15px; gap: 8px 16px; }
 
 .side-cta {
   position: fixed;
@@ -460,8 +494,14 @@ body.show-notes [data-note]::after {
   padding: 4px 8px;
 }
 
+html[lang="en"] .logo span,
+html[lang="ja"] .logo span,
+html[lang="ko"] .logo span,
+html[lang="zh-Hans"] .logo span { letter-spacing: 0.18em; text-indent: 0.18em; }
+
 @media (max-width: 1180px) {
-  .site-header { padding: 22px 20px 16px; }
+  .site-header { padding: 22px 64px 16px; }
+  .lang { right: 14px; top: 22px; }
   .menu-btn { display: block; }
   .primary-nav { display: none; }
   body.nav-open .primary-nav {
