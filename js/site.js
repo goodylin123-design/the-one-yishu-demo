@@ -106,6 +106,7 @@
               <a href="shop.html">異數臻選</a>
               <a href="news.html">最新消息</a>
               <a href="map.html">網站架構</a>
+              <a href="https://github.com/goodylin123-design/the-one-yishu-demo/blob/main/%E9%96%8B%E7%99%BC%E6%89%8B%E5%86%8A.md" target="_blank" rel="noopener">開發手冊</a>
             </div>
             <div>
               <h2>The One</h2>
